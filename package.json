@@ -4,6 +4,7 @@
   "description": "lyrics for indie sonunds",
   "author": "Oleg Sytnik",
   "scripts": {
+    "ng": "ng",
     "start": "ng serve",
     "dev": "webpack-dev-server --hot --open",
     "build": "webpack"
