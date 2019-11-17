@@ -1,0 +1,82 @@
+app-root {
+    width: 100%;
+    height: 100%;
+    section.main {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background-image: url('/assets/images/back_clouds.png'), 
+                          linear-gradient(165deg, $color-pink, $color-pink 25%, #fff 55%, #fff);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center top;
+        .dashed-board {
+            position: absolute;
+            top: 7px;
+            left: 0;
+            width: 100%;
+            border-top: 8px dashed $color-black;
+        }
+        mat-drawer-container.menu-container {
+            background: none;
+            width: 360px;
+            mat-drawer.menu-sidenav {
+                width: 390px;
+                position: fixed;
+                padding-left: $width-status-bar;
+            }
+            .mat-drawer-content {
+                position: fixed;
+                
+            }
+        }
+        .menu-sidenav-content {
+            position: fixed;
+            height: 100%;
+            width: $width-status-bar;
+            z-index: 1;
+            background-color: transparent !important;
+            display: flex;
+            align-items: center;
+            transition: background-color .11s ease-out;
+            &.isOpen {
+                background-color: rgba(0, 0, 0, 0.93) !important;
+            }
+            .open-menu-button {
+                position: fixed;
+                z-index: 2;
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                width: 28px;
+                height: 28px;
+                padding: 4px;
+                margin: 0 11px;
+                cursor: pointer;
+                transition: transform .09s ease-out;
+                &:active, &:focus {
+                    transform: scale(.79);
+                }
+                .cube {
+                    width: 12px;
+                    height: 12px;
+                    background-color: #000;
+                    transition: background-color .5s linear;
+                    &:nth-child(-n+2) {
+                        margin-bottom: 2px;
+                    }
+                }
+            }
+        }
+    }
+    .dark-layout {
+        position: absolute;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        transition: background-color 0.11s linear;
+        &.isOpen {
+            background-color: rgba(0, 0, 0, 0.33);
+        }
+    }
+}

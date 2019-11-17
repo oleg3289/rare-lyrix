@@ -1,0 +1,103 @@
+/////// for vanilla
+.slice-anime {
+    box-shadow: 0 0 14px -2px;
+    animation: slice 1.55s ease-out 1;
+}
+
+@keyframes slice {
+    from {
+        margin-top: -275px;
+        transform: rotate(110deg);
+        box-shadow: none;
+    }
+    to {
+        margin-top: 0;
+        transform: rotate(0deg);
+        box-shadow: 0 0 14px -2px;
+    }
+}
+
+/////// for text
+.flash-anime {
+    text-shadow: 
+                0 0 3px white, 
+                0 0 5px white, 
+                0 0 8px white, 
+                0 0 10px $color-disc-shadow, 
+                0 0 18px $color-disc-shadow, 
+                0 0 20px $color-disc-shadow, 
+                0 0 25px $color-disc-shadow, 
+                0 0 38px $color-disc-shadow;
+    animation: flash 1.75s ease-out 1;
+    animation-delay: .6s;
+}
+
+.isvisible {
+    visibility: visible;
+}
+
+@keyframes flash {
+    0% {
+        opacity: 0;
+        visibility: hidden;
+        text-shadow: none;
+    }   
+    65% {
+        opacity: 1;
+        visibility: visible;
+        text-shadow: 
+                    0 0 11px white, 
+                    0 0 16px white, 
+                    0 0 21px white, 
+                    0 0 26px $color-disc-shadow, 
+                    0 0 41px $color-disc-shadow, 
+                    0 0 46px $color-disc-shadow, 
+                    0 0 56px $color-disc-shadow, 
+                    0 0 81px $color-disc-shadow;
+    }
+    100% {
+        opacity: 1;
+        visibility: visible;
+        text-shadow: 
+                    0 0 3px white, 
+                    0 0 5px white, 
+                    0 0 8px white, 
+                    0 0 10px $color-disc-shadow, 
+                    0 0 18px $color-disc-shadow, 
+                    0 0 20px $color-disc-shadow, 
+                    0 0 25px $color-disc-shadow, 
+                    0 0 38px $color-disc-shadow;
+    }
+}   
+
+////////////////////// MENU ////////////////
+.rotateRight {
+    background-color: #fff !important;
+    animation: rotateRight .35s ease-out 1;
+}
+.rotateLeft {
+    background-color: #000;
+    animation: rotateLeft .35s ease-out 1;
+}
+
+@keyframes rotateRight {
+    from {
+        opacity: .5;
+        transform: rotate(0deg);
+    }
+    to {
+        opacity: 1;
+        transform: rotate(90deg);
+    }
+}
+
+@keyframes rotateLeft {
+    from {
+        opacity: .5;
+        transform: rotate(0deg);
+    }
+    to {
+        opacity: 1;
+        transform: rotate(-90deg);
+    }
+}
