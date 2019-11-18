@@ -36,7 +36,7 @@
     "@types/node": "^12.12.5",
     "angular2-template-loader": "^0.6.2",
     "awesome-typescript-loader": "^5.2.1",
-    "typescript": "~3.5.2",
+    "typescript": "^3.5.3",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.9.0"
   }
