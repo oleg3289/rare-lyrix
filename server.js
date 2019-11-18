@@ -11,7 +11,6 @@ app.use(express.static(path.join(__dirname, 'dist/myapp')));
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist/myapp/index.html'));
-    res.setHeader("Set-Cookie", "HttpOnly;Secure;SameSite=Strict");
 });
 
 const port = process.env.PORT || 3000;
