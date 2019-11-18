@@ -2,8 +2,11 @@ const express = require('express');
 const http = require('http');
 const path = require('path');
 const compression = require('compression'); 
+const cors = require('cors');
 
 const app = express();
+
+app.use(cors());
 
 app.use(compression());
 
