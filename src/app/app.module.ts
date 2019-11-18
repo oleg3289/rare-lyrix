@@ -5,6 +5,8 @@ import { AppComponent }   from './app.component';
 import { VanillaModule } from './vanilla/vanilla.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { RouterModule } from '@angular/router';
+import { APP_ROUTING } from './app.routing';
 
 @NgModule({
     imports:      [ 
@@ -12,7 +14,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
         FormsModule,
         VanillaModule,
         BrowserAnimationsModule,
-        MatSidenavModule        
+        MatSidenavModule,
+        RouterModule.forRoot(APP_ROUTING)     
     ],
     declarations: [ AppComponent ],
     bootstrap:    [ AppComponent ]

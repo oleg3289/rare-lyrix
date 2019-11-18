@@ -1,6 +1,7 @@
-import { Component, ChangeDetectionStrategy, ViewEncapsulation, ViewChild, Renderer2, ElementRef, Inject, OnInit } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ViewEncapsulation, ViewChild, Renderer2, ElementRef, Inject, OnInit, PLATFORM_ID, AfterViewChecked, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
-import { DOCUMENT } from '@angular/common';
+import { DOCUMENT, isPlatformBrowser } from '@angular/common';
+import { Router, NavigationStart, NavigationEnd } from '@angular/router';
      
 @Component({
     selector: 'app-root',
@@ -9,21 +10,41 @@ import { DOCUMENT } from '@angular/common';
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit, AfterViewInit {
     private isMatMenuOpen: boolean = false;
     private cubeElems: ElementRef[] = null;
+
+    public isBrowser: boolean = false;
+    public isLoading: boolean = false;
 
     @ViewChild(MatDrawer, {static: true}) private matDrawer: MatDrawer;
     
     constructor(
+        @Inject(PLATFORM_ID) private platformId: Object,
         @Inject(DOCUMENT) private document: Document,
         private renderer: Renderer2,
         private elemRef: ElementRef,
-    ) {}
+        private cdRef: ChangeDetectorRef,
+        private router: Router
+    ) {
+        this.isBrowser = isPlatformBrowser(platformId);
+        
+        this.router.events.subscribe(() => {
+            if (event instanceof NavigationStart) {
+                this.isLoading = true;
+            }
+            if(event instanceof NavigationEnd){
+                this.isLoading = false;
+              }
+        })
+    }
 
     public ngOnInit():void {
         this.cubeElems = this.elemRef.nativeElement.querySelectorAll('.cube');
-        console.log(this.matDrawer.opened)
+    }
+
+    ngAfterViewInit():void {
+        this.cdRef.detectChanges()
     }
 
     public initAnime():void {
